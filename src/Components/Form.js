@@ -13,7 +13,8 @@ const formSchema = yup.object().shape({
   pepperoni: yup.boolean().oneOf([true]),
   onions: yup.boolean().oneOf([true]),
   peppers: yup.boolean().oneOf([true]),
-  tomatoes: yup.boolean().oneOf([true])
+  tomatoes: yup.boolean().oneOf([true]),
+  textarea: yup.string()
 });
 
 const Form = () => {
@@ -25,7 +26,8 @@ const Form = () => {
     pepperoni: "",
     onions: "",
     peppers: "",
-    tomatoes: ""
+    tomatoes: "",
+    textarea: ""
   });
 
   const [errors, setErrors] = useState({
@@ -34,7 +36,8 @@ const Form = () => {
     pepperoni: "",
     onions: "",
     peppers: "",
-    tomatoes: ""
+    tomatoes: "",
+    textarea: ""
   });
 
   const [post, setPost] = useState([]);
@@ -58,15 +61,17 @@ const Form = () => {
           pepperoni: "",
           onions: "",
           peppers: "",
-          tomatoes: ""
+          tomatoes: "",
+          textarea: ""
         });
       })
       .catch(error => console.log("something is wrong", error.response));
   };
 
   const validateChange = e => {
-    yup.reach(formSchema, e.target.name);
-    validate(e.target.name === "pepperoni" ? e.target.checked : e.target.value)
+    yup
+      .reach(formSchema, e.target.name)
+      .validate(e.target.name === "checked" ? e.target.checked : e.target.value)
       .then(valid => {
         setErrors({
           ...errors,
@@ -130,7 +135,7 @@ const Form = () => {
           onChange={inputChange}
         />
         {errors.pepperoni.length > 0 ? (
-          <p className="pepperoni">{errors.pepperoni}</p>
+          <p className="error">{errors.pepperoni}</p>
         ) : null}
       </label>
       <br />
@@ -145,7 +150,7 @@ const Form = () => {
           onChange={inputChange}
         />
         {errors.onions.length > 0 ? (
-          <p className="onions">{errors.onions}</p>
+          <p className="error">{errors.onions}</p>
         ) : null}
       </label>
       <br />
@@ -160,7 +165,7 @@ const Form = () => {
           onChange={inputChange}
         />
         {errors.peppers.length > 0 ? (
-          <p className="peppers">{errors.peppers}</p>
+          <p className="error">{errors.peppers}</p>
         ) : null}
       </label>
       <br />
@@ -175,7 +180,7 @@ const Form = () => {
           onChange={inputChange}
         />
         {errors.tomatoes.length > 0 ? (
-          <p className="tomatoes">{errors.tomatoes}</p>
+          <p className="error">{errors.tomatoes}</p>
         ) : null}
       </label>
       <br />
@@ -189,10 +194,14 @@ const Form = () => {
           value={formState.textarea}
           onChange={inputChange}
         />
+        {errors.textarea.length > 0 ? (
+          <p className="error">{errors.flavor}</p>
+        ) : null}
       </label>
+      <br />
 
       <pre>{JSON.stringify(post, null, 2)}</pre>
-      <button disabled={button}>Submit</button>
+      <button disable={button}>Submit</button>
     </form>
   );
 };
