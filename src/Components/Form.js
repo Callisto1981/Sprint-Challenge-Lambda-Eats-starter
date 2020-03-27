@@ -117,7 +117,7 @@ const Form = () => {
 
       <label htmlFor="size">
         What size Pizza:
-        <select id="size" name="name" onChange={inputChange}>
+        <select id="size" name="size" onChange={inputChange}>
           <option value="small">Small</option>
           <option value="medium">Medium</option>
           <option value="large">Large</option>
@@ -201,7 +201,9 @@ const Form = () => {
       <br />
 
       <pre>{JSON.stringify(post, null, 2)}</pre>
-      <button disable={button}>Submit</button>
+      <button name="button" disable={button}>
+        Submit
+      </button>
     </form>
   );
 };
