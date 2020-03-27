@@ -66,7 +66,7 @@ const Form = () => {
 
   const validateChange = e => {
     yup.reach(formSchema, e.target.name);
-    validate(e.target.name === "terms" ? e.target.checked : e.target.value)
+    validate(e.target.name === "pepperoni" ? e.target.checked : e.target.value)
       .then(valid => {
         setErrors({
           ...errors,
@@ -180,8 +180,21 @@ const Form = () => {
       </label>
       <br />
 
+      <label htmlFor="textarea">
+        Comments:
+        <textarea
+          id="textarea"
+          type="text"
+          name="textarea"
+          value={formState.textarea}
+          onChange={inputChange}
+        />
+      </label>
+
       <pre>{JSON.stringify(post, null, 2)}</pre>
       <button disabled={button}>Submit</button>
     </form>
   );
 };
+
+export default Form;

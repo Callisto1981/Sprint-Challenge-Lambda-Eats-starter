@@ -8,8 +8,9 @@ const Home = () => {
       <h2>Create your own Pizza</h2>
 
       <h3>Click here to order</h3>
-      <Link className="" to={"/form"}>
-        <div className="order-here">ORDER</div>
+
+      <Link className="formLink" to={"/form"}>
+        ORDER
       </Link>
     </div>
   );
