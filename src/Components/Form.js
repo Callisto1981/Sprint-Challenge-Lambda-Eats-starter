@@ -71,18 +71,42 @@ const Form = () => {
       validateChange(e);
       setFormState(newFormData);
   };
-  
+
   return (
-    <form>
+    <form onSubmit={formSubmit}>
+        <Link to={"/"}>
+            <div>Home</div>
+        </Link>
       <label htmlFor="name">
         Name:
-        <input id="name" type="text" name="name" />
-      </label>
-      {error.target.name}
+        <input id="name" type="text" name="name" value={formState.name} onChange={inputChange} />
+      {errors.name.length > 0 ? <p className="error">{errors.name}</p> : null}
+      </label><br/>
 
-      <label htmlFor="">
-        <input id="" type="" name="" />
-      </label>
+      <label htmlFor="size">
+          What size Pizza: 
+        <select 
+        id="size"
+        name="name"
+        onChange={inputChange}>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+        </select>
+        </label><br/>
+
+        <label htmlFor="pepperoni">
+            pepperoni
+            <input 
+            id="pepperoni"
+            type="checkbox"
+            name="pepperoni"
+            checked={formState.pepperoni}
+            onChange={inputChange}/>
+            {errors.pepperoni.length > 0 ? <p className="pepperoni">{errors.pepperoni}</p> : null}
+        </label>
+      <pre>{JSON.stringify(post, null, 2)}</pre>
+      <button disabled={button}>Submit</button>
     </form>
   );
 };
