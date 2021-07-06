@@ -13,8 +13,16 @@ Demonstrate your understanding of this week's concepts by answering the followin
 Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your Team Lead.
 
 1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
+
+It is a hook that allows you to use the "match property" but doesn't render the "Route" component. It acts like a "route" and matches the URL.
+
 2. How would you explain form validation to someone who has never programmed before?
-3. In 1-2 sentences, define end to end testing. 
+
+Form validation is what let's a user know if a form is properly filled out or not. If a required field is not filled out, the form validation allows a programmer to create a message that will pop up for the user to let them know that the field is infact missing something.
+
+3. In 1-2 sentences, define end to end testing.
+
+End to end testing is a test done using Cypress that checks from the start of an app to the end of the app, looking for bugs and to see if each component in the app is behaving as it should. If there is a component that fails to work- example: an input for name, then the test will fail letting the developer know that the input component needs some debugging.
 
 You are expected to be able to answer all these questions. Your responses contribute to your Sprint Challenge grade. Skipping this section **will** prevent you from passing this challenge.
 
@@ -39,12 +47,9 @@ Your MVP should include, at a minimum, the following components.
 
 - [ ]A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable)
 - [ ] A form with a "/pizza" route
-- [ ] A name text input field
-- [ ] Validation for name - name must be at least 2 characters
-- [ ]Dropdown form component for pizza size
-- [ ]Checklist form component for toppings - at least 4 (hint: name each separately!)
-- [ ] Text input form component for special instructions
-- [ ] An Add to Order button that submits form and returns a database record of name, pizza size, sauce, and special instructions
+
+* [ ] Text input form component for special instructions
+* [ ] An Add to Order button that submits form and returns a database record of name, pizza size, sauce, and special instructions
 
 #### Testing MVP
 
